@@ -4,6 +4,7 @@ var serveStatic = require('serve-static')
 
 
 var app = express()
+const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://bharathi-admin:bharathipassword@sandbox-ile6l.mongodb.net/test";
 
 app.use(serveStatic(path.join(__dirname, 'dist')))
