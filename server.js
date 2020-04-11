@@ -1,35 +1,10 @@
-const express = require("express");
+var express = require('express')
+var path = require('path')
+var serveStatic = require('serve-static')
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://bharathi-admin:bharathipassword@sandbox-ile6l.mongodb.net/test";
+var app = express()
+app.use(serveStatic(path.join(__dirname, 'dist')))
 
-const app = express();
-
-app.get("/girls",function(req, res){
-//    res.send("Smethig will be better");
-   MongoClient.connect(uri, function(err, client) {
-    if(err) {
-         console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
-    }
-    console.log('Connected...');
-    const collection = client.db("matri").collection("girlsDetails");
-   
-    var dbo = client.db("matri");
-    dbo.collection("girlsDetails").findOne({}, function(err, result) {
-        
-    res.send(JSON.stringify(result.name));
-    if (err) throw err;
-    });
-    if (err) {
-        console.log("Error while closing connection");  
-        throw err;}
-    // perform actions on the collection object
-    client.close();
- });
- 
- })
-
-app.listen(3000);
-
-var msg = 'Hello World';
-console.log(msg);
+var port = process.env.PORT || 8000
+app.listen(port)
+console.log('server started ' + port);
