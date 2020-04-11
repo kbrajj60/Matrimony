@@ -16,8 +16,15 @@ app.get("/girls",function(req, res){
              console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
         }
         console.log('Connected...');
+        const collection = client.db("matri").collection("girlsDetails");
+   
+    var dbo = client.db("matri");
+    dbo.collection("girlsDetails").findOne({}, function(err, result) {
+        
+    res.send(JSON.stringify(result.name));
+    if (err) throw err;
     });
-    res.send("Smethig will be better");
+    });
 });
 
 
