@@ -20,6 +20,9 @@ app.get("/girls",function(req, res){
     res.send(JSON.stringify(result.name));
     if (err) throw err;
     });
+    if (err) {
+        console.log("Error while closing connection");  
+        throw err;}
     // perform actions on the collection object
     client.close();
  });
