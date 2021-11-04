@@ -1,33 +1,23 @@
-const express = require("express");
-
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://bharathi-admin:bharathipassword@sandbox-ile6l.mongodb.net/test";
+const express = require('express');
+ const db = require('./config/db');
 
 const app = express();
 
-app.get("/girls",function(req, res){
-//    res.send("Smethig will be better");
-   MongoClient.connect(uri, function(err, client) {
-    if(err) {
-         console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
-    }
-    console.log('Connected...');
-    const collection = client.db("matri").collection("girlsDetails");
-   
-    var dbo = client.db("matri");
-    dbo.collection("girlsDetails").findOne({}, function(err, result) {
-        
-    res.send(JSON.stringify(result.name));
-    if (err) throw err;
-    db.close();
-    });
-    // perform actions on the collection object
-    client.close();
- });
- 
- })
+app.get('/',(req,res) => res.send("You got connected to Matirmony app sucessfully"));
 
-app.listen(3000);
+//Connecting Mongo DB
+db();
 
-var msg = 'Hello World';
-console.log(msg);
+//Initilize Middleware.
+app.use(express.json({extended: false}));
+
+//Define different routes.
+app.use('/api/users', require('./routes/api/users'));
+// app.use('/api/posts', require('./routes/api/posts'));
+// app.use('/api/profile', require('./routes/api/profile'));
+app.use('/api/login', require('./routes/api/login'));
+// app.use('/api/matches', require('./routes/api/matches'));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT,() => console.log("iam listening on 5000"));
+

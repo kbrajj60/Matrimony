@@ -4,12 +4,21 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server",
+    "server": "nodemon server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.6",
     "express": "^4.17.1",
-    "mongodb": "^3.5.5"
+    "express-validator": "^6.13.0",
+    "gravatar": "^1.8.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.5",
+    "mongoose": "^6.0.12",
+    "nodemon": "^2.0.14",
+    "token": "^0.1.0"
   }
 }

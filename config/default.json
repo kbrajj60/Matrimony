@@ -1,0 +1,4 @@
+{
+    "mongoURI":"mongodb+srv://mern_user_1:user_1_password@mernapp.ile6l.mongodb.net/mernapp?retryWrites=true&w=majority",
+    "jwtSecret" : "kavthil"
+}
