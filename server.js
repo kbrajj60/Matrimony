@@ -14,7 +14,7 @@ app.use(express.json({extended: false}));
 //Define different routes.
 app.use('/api/users', require('./routes/api/users'));
 // app.use('/api/posts', require('./routes/api/posts'));
-// app.use('/api/profile', require('./routes/api/profile'));
+app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/login', require('./routes/api/login'));
 // app.use('/api/matches', require('./routes/api/matches'));
 
